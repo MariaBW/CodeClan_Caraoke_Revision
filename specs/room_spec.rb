@@ -41,6 +41,25 @@ class TestRoom < MiniTest::Test
     assert_equal(1, @room1.play_list.length())
   end
 
+  def test_room_is_full
+    @room2 = Room.new("Small", 2, 10)
+    @guest2 = Guest.new("Bella", 40)
+    @room2.check_in(@guest1)
+    @room2.check_in(@guest2)
+    assert_equal(true, @room2.room_full())
+
+  end
+
+  def test_cannot_check_in_room_full
+    @room2 = Room.new("Small", 2, 10)
+    @guest2 = Guest.new("Bella", 40)
+    @room2.check_in(@guest1)
+    @room2.check_in(@guest2)
+    @guest3 = Guest.new("Susie", 30)
+    result = @room2.check_in(@guest3)
+    assert_equal("Sorry this room is full", result)
+
+  end
 
 
 
