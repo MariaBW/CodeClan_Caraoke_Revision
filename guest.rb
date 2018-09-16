@@ -6,4 +6,15 @@ def initialize(name, cash)
   @cash = cash
 end
 
+def pay_fee(fee)
+  @cash -= fee
+end
+
+def can_afford(cost)
+  @cash >= cost
+end
+
+
+
+
 end
